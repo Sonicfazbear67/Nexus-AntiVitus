@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NEXUS Security | Advanced Threat Protection</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header>
+            <div class="header-container">
+                <div class="logo">
+                    <div class="logo-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <div class="logo-text">
+                        <h1 class="glitch" data-text="NEXUS SECURITY">NEXUS SECURITY</h1>
+                        <span>ADVANCED THREAT PROTECTION SYSTEM v4.2.1</span>
+                    </div>
+                </div>
+                <div class="status-bar">
+                    <div class="status-indicator">
+                        <div class="status-dot"></div>
+                        <span>SYSTEM SECURE</span>
+                    </div>
+                    <div class="system-time" id="system-time">LOADING...</div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Dashboard -->
+        <main>
+            <div class="dashboard">
+                <!-- Link Scanner -->
+                <div class="panel">
+                    <div class="panel-header">
+                        <div class="panel-icon">
+                            <i class="fas fa-link"></i>
+                        </div>
+                        <h2 class="panel-title">LINK SCANNER</h2>
+                    </div>
+                    <div class="scanner-input">
+                        <p>Enter URL to analyze for phishing, malware, and security threats:</p>
+                        <div class="input-group">
+                            <input type="text" class="input-field" id="link-input" placeholder="https://example.com">
+                            <button class="scan-btn" id="scan-link-btn">SCAN</button>
+                        </div>
+                    </div>
+                    <div class="results" id="link-results">
+                        <div class="result-line"><span class="result-icon info"><i class="fas fa-info-circle"></i></span> Awaiting URL scan request...</div>
+                    </div>
+                </div>
+
+                <!-- File Scanner -->
+                <div class="panel">
+                    <div class="panel-header">
+                        <div class="panel-icon">
+                            <i class="fas fa-file-code"></i>
+                        </div>
+                        <h2 class="panel-title">FILE SCANNER</h2>
+                    </div>
+                    <div class="scanner-input">
+                        <p>Upload file for deep malware analysis (Max 100MB):</p>
+                        <div class="upload-area" id="upload-area">
+                            <div class="upload-icon">
+                                <i class="fas fa-cloud-upload-alt"></i>
+                            </div>
+                            <p>Drag & drop file here or click to browse</p>
+                            <p><small>Supports: EXE, ZIP, PDF, DOC, JS, PHP</small></p>
+                        </div>
+                        <input type="file" id="file-input" hidden>
+                    </div>
+                    <div class="results" id="file-results">
+                        <div class="result-line"><span class="result-icon info"><i class="fas fa-info-circle"></i></span> No file selected for analysis</div>
+                    </div>
+                </div>
+
+                <!-- Phone Number Scanner -->
+                <div class="panel">
+                    <div class="panel-header">
+                        <div class="panel-icon">
+                            <i class="fas fa-phone-alt"></i>
+                        </div>
+                        <h2 class="panel-title">PHONE NUMBER SCANNER</h2>
+                    </div>
+                    <div class="scanner-input">
+                        <p>Check phone number for spam, fraud, or security risks:</p>
+                        <div class="input-group">
+                            <input type="text" class="input-field" id="phone-input" placeholder="+1 (555) 123-4567">
+                            <button class="scan-btn" id="scan-phone-btn">SCAN</button>
+                        </div>
+                    </div>
+                    <div class="results" id="phone-results">
+                        <div class="result-line"><span class="result-icon info"><i class="fas fa-info-circle"></i></span> Enter a phone number to begin scan</div>
+                    </div>
+                </div>
+
+                <!-- System Scanner -->
+                <div class="panel">
+                    <div class="panel-header">
+                        <div class="panel-icon">
+                            <i class="fas fa-desktop"></i>
+                        </div>
+                        <h2 class="panel-title">SYSTEM SCANNER</h2>
+                    </div>
+                    <div class="scanner-input">
+                        <p>Perform full system security diagnostic:</p>
+                        <button class="scan-btn" style="width:100%; padding: 18px;" id="system-scan-btn">INITIATE FULL SYSTEM SCAN</button>
+                    </div>
+                    <div class="progress-container" id="system-progress" style="display:none;">
+                        <div class="progress-text">
+                            <span>Scanning system files...</span>
+                            <span id="progress-percent">0%</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" id="progress-fill"></div>
+                        </div>
+                    </div>
+                    <div class="results" id="system-results">
+                        <div class="result-line"><span class="result-icon info"><i class="fas fa-info-circle"></i></span> System scan not initiated</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- VM Test Environment -->
+            <div class="panel">
+                <div class="panel-header">
+                    <div class="panel-icon">
+                        <i class="fas fa-laptop-code"></i>
+                    </div>
+                    <h2 class="panel-title">VIRTUAL TEST ENVIRONMENT (SANDBOX)</h2>
+                </div>
+                
+                <div class="tabs">
+                    <button class="tab active" data-tab="vm-test">VM TEST</button>
+                    <button class="tab" data-tab="threat-analysis">THREAT ANALYSIS</button>
+                    <button class="tab" data-tab="system-stats">SYSTEM STATS</button>
+                </div>
+                
+                <div class="tab-content active" id="vm-test">
+                    <p>Safe environment to test suspicious links and files in isolation:</p>
+                    <div class="input-group">
+                        <input type="text" class="input-field" id="vm-input" placeholder="Enter URL or file path to test in VM">
+                        <button class="scan-btn" id="vm-execute-btn">EXECUTE IN VM</button>
+                    </div>
+                    
+                    <div class="vm-container" id="vm-output">
+                        <div class="vm-line">NEXUS SECURITY VM v2.5.1</div>
+                        <div class="vm-line">Secure Sandbox Environment Initialized...</div>
+                        <div class="vm-line">Memory allocated: 4GB RAM | Storage: 50GB SSD</div>
+                        <div class="vm-line">Network: Isolated | OS: Windows 11 Pro x64</div>
+                        <div class="vm-line">System time: <span id="vm-time">14:30:45</span></div>
+                        <div class="vm-line">============================================</div>
+                        <div class="vm-line"><span class="vm-prompt">vm-user@nexus:~$</span> <span class="vm-command">status --security</span></div>
+                        <div class="vm-line">All security modules active. No threats detected.</div>
+                        <div class="vm-line"><span class="vm-prompt">vm-user@nexus:~$</span> <span class="vm-command" id="current-command">_</span></div>
+                    </div>
+                </div>
+                
+                <div class="tab-content" id="threat-analysis">
+                    <div class="threat-stats">
+                        <div class="stat-box">
+                            <h3>THREATS BLOCKED</h3>
+                            <div class="stat-value">1,247</div>
+                            <p>Last 24 hours</p>
+                        </div>
+                        <div class="stat-box">
+                            <h3>MALWARE DETECTED</h3>
+                            <div class="stat-value">43</div>
+                            <p>Active in system</p>
+                        </div>
+                        <div class="stat-box">
+                            <h3>SAFE FILES</h3>
+                            <div class="stat-value">98.2%</div>
+                            <p>Of all scanned files</p>
+                        </div>
+                        <div class="stat-box">
+                            <h3>SYSTEM HEALTH</h3>
+                            <div class="stat-value">94%</div>
+                            <p>Optimal performance</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="tab-content" id="system-stats">
+                    <div class="results">
+                        <div class="result-line"><span class="result-icon safe"><i class="fas fa-check-circle"></i></span> Firewall: Active and properly configured</div>
+                        <div class="result-line"><span class="result-icon safe"><i class="fas fa-check-circle"></i></span> Real-time protection: Enabled</div>
+                        <div class="result-line"><span class="result-icon warning"><i class="fas fa-exclamation-triangle"></i></span> Virus definitions: Updated 2 days ago</div>
+                        <div class="result-line"><span class="result-icon safe"><i class="fas fa-check-circle"></i></span> Network security: All ports secured</div>
+                        <div class="result-line"><span class="result-icon danger"><i class="fas fa-times-circle"></i></span> System vulnerabilities: 3 critical issues found</div>
+                        <div class="result-line"><span class="result-icon safe"><i class="fas fa-check-circle"></i></span> Browser extensions: No malicious add-ons detected</div>
+                        <div class="result-line"><span class="result-icon info"><i class="fas fa-info-circle"></i></span> Last full scan: 5 days ago | Recommend: Weekly scan</div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- Footer with Copyright -->
+        <footer>
+            <p>NEXUS SECURITY SYSTEM | © 2023 Advanced Threat Protection Network | Developed by <strong>Mostafa Mohamed</strong> - Security Engineer</p>
+            <p>This is a demonstration interface for cybersecurity analysis. No actual files are uploaded or scanned.</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
